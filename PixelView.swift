@@ -16,6 +16,8 @@ final class PixelView: NSView {
     private var modifiers: UInt8 = 0
     private var wheelFraction: CGFloat = 0
     private var drag: (handle: ResizeHandle, frame: NSRect, start: NSPoint, area: NSRect)?
+    var canDropFiles: (() -> Bool)?
+    var onDropFiles: (([URL]) -> Bool)?
     var onResize: ((CGFloat) -> Void)?
     var onRestore: (() -> Void)?
     var aspect: CGFloat = 16.0 / 9.0
@@ -24,6 +26,7 @@ final class PixelView: NSView {
         self.serial = serial
         preview = AVCaptureVideoPreviewLayer(session:session)
         super.init(frame:.zero)
+        registerForDraggedTypes([.fileURL])
         wantsLayer = true
         layer?.backgroundColor = NSColor.black.cgColor
         preview.videoGravity = .resizeAspect
@@ -32,6 +35,20 @@ final class PixelView: NSView {
     required init?(coder: NSCoder) { fatalError() }
     override var acceptsFirstResponder: Bool { true }
     override func acceptsFirstMouse(for event: NSEvent?) -> Bool { true }
+    private func files(from board: NSPasteboard) -> [URL] {
+        board.readObjects(forClasses: [NSURL.self], options: [.urlReadingFileURLsOnly: true]) as? [URL] ?? []
+    }
+    override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
+        guard canDropFiles?() == true, sender.draggingSourceOperationMask.contains(.copy),
+              !files(from: sender.draggingPasteboard).isEmpty else { return [] }
+        return .copy
+    }
+    override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
+        let urls = files(from: sender.draggingPasteboard)
+        guard !urls.isEmpty else { return false }
+        releaseInput()
+        return onDropFiles?(urls) == true
+    }
     override func layout() {
         super.layout()
         CATransaction.begin(); CATransaction.setDisableActions(true)

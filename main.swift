@@ -6,6 +6,7 @@ final class Controller: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMen
     let capture=Capture(), serial=KVMSerial()
     var window:PixelWindow!
     var video:PixelView!
+    var transfer: USBTransfer!
     var pixels=CGSize(width:1920,height:1080)
     var zoom: CGFloat = 1
     let controls=NSMenu(title:"控制")
@@ -27,6 +28,9 @@ final class Controller: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMen
         window.title="NanoKVM 原生窗口";window.isOpaque=true;window.hasShadow=false;window.backgroundColor = .black
         window.isReleasedWhenClosed=false;window.acceptsMouseMovedEvents=true
         video=PixelView(session:capture.session,serial:serial)
+        transfer = USBTransfer(window: window)
+        video.canDropFiles = { [weak self] in self?.transfer.canDrop == true }
+        video.onDropFiles = { [weak self] urls in self?.transfer.accept(urls) == true }
         video.onResize = { [weak self] width in
             guard let self else { return }
             self.zoom = width * self.window.backingScaleFactor / self.pixels.width
@@ -70,9 +74,13 @@ final class Controller: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMen
     func windowDidChangeScreen(_ n:Notification){fit()}
     func windowDidMove(_ n:Notification){ UserDefaults.standard.set(NSStringFromRect(window.frame),forKey:"frame") }
     func windowDidResignKey(_ n:Notification){video.releaseInput()}
+    func windowShouldClose(_ sender: NSWindow) -> Bool { transfer?.busy != true }
+    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
+        transfer?.busy == true ? .terminateCancel : .terminateNow
+    }
     func windowWillClose(_ n:Notification){NSApp.terminate(nil)}
     func applicationWillTerminate(_ n:Notification){video.releaseInput();serial.closePort()}
-    @objc func closeWindow(){window.close()}
+    @objc func closeWindow(){if !transfer.busy { window.close() }}
     func notice(_ text:String){
         guard window.attachedSheet == nil else{return}
         let a=NSAlert();a.messageText="NanoKVM 原生窗口";a.informativeText=text;a.addButton(withTitle:"好");a.beginSheetModal(for:window)
@@ -85,7 +93,11 @@ final class Controller: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMen
             item.state=(serial.connected && path==serial.selectedPath) ? .on:.off
         }
         if controls.items.isEmpty {controls.addItem(withTitle:"未找到 NanoKVM 串口",action:nil,keyEquivalent:"")}
+        controls.addItem(.separator())
+        let drive = controls.addItem(withTitle: "选择中转 U 盘…", action: #selector(chooseDrive), keyEquivalent: "")
+        drive.target = self
     }
+    @objc func chooseDrive() { transfer.chooseDrive() }
     @objc func portSelected(_ sender:NSMenuItem){
         guard let path=sender.representedObject as? String else{return}
         video.releaseInput();serial.select(path);window.invalidateCursorRects(for:video)

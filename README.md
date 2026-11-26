@@ -4,9 +4,11 @@
 
 窗口里只有被控电脑的画面。默认情况下，一个采集像素对应一个窗口缓冲区像素。在我的 4K 显示器使用 2× 显示缩放时，窗口占 **960 × 540 个 macOS 坐标点**，实际显示 **1920 × 1080 个像素**。也可以拖大窗口看细节，再双击边沿回到原始大小。
 
+**1.2 新增 U 盘拖放传输。** 从 Finder 把文件或文件夹拖进窗口，应用会复制到选定的 U 盘并安全推出。看到提示后，再把 NanoKVM 的拨键从 **H** 切到 **T**，即可在 Windows 打开这一批文件。
+
 ## 下载安装
 
-在 macOS 14 或更新版本上，下载 DMG，双击打开，将「NanoKVM 原生窗口」拖入「Applications（应用程序）」文件夹。同一份安装包支持 Intel Mac 和 Apple 芯片 Mac。[下载 v1.1 通用安装包](https://github.com/LiuJH12138/NanoKVM-PixelWindow/releases/download/v1.1/NanoKVM-PixelWindow-1.1-macOS-universal.dmg) · [所有版本与校验值](https://github.com/LiuJH12138/NanoKVM-PixelWindow/releases)
+在 macOS 14 或更新版本上，下载 DMG，双击打开，将「NanoKVM 原生窗口」拖入「Applications（应用程序）」文件夹。同一份安装包支持 Intel Mac 和 Apple 芯片 Mac。[下载 v1.2 通用安装包](https://github.com/LiuJH12138/NanoKVM-PixelWindow/releases/download/v1.2/NanoKVM-PixelWindow-1.2-macOS-universal.dmg) · [所有版本与校验值](https://github.com/LiuJH12138/NanoKVM-PixelWindow/releases)
 
 此版本采用本地临时签名，尚未经过 Apple 公证。如果首次打开时 macOS 提示无法验证开发者，请确认下载来源并按[苹果的说明](https://support.apple.com/zh-cn/102445)操作。
 
@@ -44,6 +46,14 @@ open "$PWD/.build/NanoKVM 原生窗口.app"
 | 拖动任意边缘或角 | 按视频宽高比缩放 |
 | 双击边缘或角 | 恢复原生像素大小，桌面空间不足时等比缩小 |
 | Command + W 或 Command + Q | 关闭窗口或退出应用 |
+
+## 用 U 盘从 Mac 传文件到 Windows（1.2）
+
+1. 把两端均可读写的 U 盘（例如 exFAT）接到 NanoKVM 的 USB-A 口，拨到 **H**，等它出现在 Finder。
+2. 从 Finder 把文件或文件夹拖到视频窗口。首次传输时按卷名选定中转盘；以后通过「控制 → 选择中转 U 盘」可以换盘。每批文件放在 U 盘根目录下独立的 `NanoKVM-日期_时间-编号` 文件夹中。
+3. 等窗口显示「U 盘已安全推出」后拨到 **T**，在 Windows 中打开这批文件。下一批传输前，先在 Windows 安全弹出 U 盘，再拨回 **H**。
+
+复制遇到错误时窗口会提示。已复制但推出失败时，请关闭占用 U 盘的程序，并在 Finder 中手动推出后再切换。
 
 ## 兼容范围与画质
 

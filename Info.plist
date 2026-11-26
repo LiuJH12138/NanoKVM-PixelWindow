@@ -4,11 +4,12 @@
 <key>CFBundleName</key><string>NanoKVM 原生窗口</string>
 <key>CFBundleExecutable</key><string>NanoKVMPixelWindow</string>
 <key>CFBundleIdentifier</key><string>local.nanokvm.pixelwindow</string>
-<key>CFBundleVersion</key><string>2</string>
-<key>CFBundleShortVersionString</key><string>1.1</string>
+<key>CFBundleVersion</key><string>3</string>
+<key>CFBundleShortVersionString</key><string>1.2</string>
 <key>CFBundlePackageType</key><string>APPL</string>
 <key>LSMinimumSystemVersion</key><string>14.0</string>
 <key>NSHighResolutionCapable</key><true/>
 <key>NSCameraUsageDescription</key><string>显示 NanoKVM 的 USB HDMI 采集画面。</string>
+<key>NSRemovableVolumesUsageDescription</key><string>将从 Finder 拖入的文件复制到你选定的 NanoKVM 中转 U 盘。</string>
 <key>NSPrincipalClass</key><string>NSApplication</string>
 </dict></plist>
