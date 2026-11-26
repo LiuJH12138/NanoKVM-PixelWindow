@@ -1,14 +1,22 @@
-# NanoKVM PixelWindow
+# <img src="Assets/AppIcon.png" width="52" height="52" align="middle" alt=""> NanoKVM PixelWindow
+
+用 **Sipeed NanoKVM-USB** 把 Windows 桌面放进 Mac 上的一扇无边框窗口。用 Mac 的键鼠直接操作，双击窗口边缘回到原生像素大小。
+
+**[下载 macOS 版（DMG）][dmg]** · [版本说明](https://github.com/LiuJH12138/NanoKVM-PixelWindow/releases/latest) · macOS 14+ · Intel 和 Apple 芯片
+
+![实机界面合成。左侧是 Mac 的 Finder，右侧是 NanoKVM 采集的 Windows 计算器，正在显示 1920 × 1080 的计算结果。](Assets/WindowPreview.png)
+
+*从左侧 Finder 把文件拖入右侧采集窗口，应用会复制到选定的中转 U 盘。等到安全推出提示，再把 NanoKVM 拨到 T，即可在 Windows 读取。*
+
+## 为什么做这个窗口
 
 我用一台 Mac 和一块 **Sipeed NanoKVM-USB 标准版**操作 Windows 笔记本。Windows 输出 1080p，而 Mac 接的是 4K 显示器。把采集画面铺满屏幕时，文字也被放大了。我想在 Mac 桌面上留一块区域给 Windows，看清小字，旁边还能放自己的应用，于是做了这个 Swift 原生窗口。
 
 窗口里只有被控电脑的画面。默认情况下，一个采集像素对应一个窗口缓冲区像素。在我的 4K 显示器使用 2× 显示缩放时，窗口占 **960 × 540 个 macOS 坐标点**，实际显示 **1920 × 1080 个像素**。也可以拖大窗口看细节，再双击边沿回到原始大小。
 
-**1.2 新增 U 盘拖放传输。** 从 Finder 把文件或文件夹拖进窗口，应用会复制到选定的 U 盘并安全推出。看到提示后，再把 NanoKVM 的拨键从 **H** 切到 **T**，即可在 Windows 打开这一批文件。
-
 ## 下载安装
 
-在 macOS 14 或更新版本上，下载 DMG，双击打开，将「NanoKVM 原生窗口」拖入「Applications（应用程序）」文件夹。同一份安装包支持 Intel Mac 和 Apple 芯片 Mac。[下载 v1.2 通用安装包](https://github.com/LiuJH12138/NanoKVM-PixelWindow/releases/download/v1.2/NanoKVM-PixelWindow-1.2-macOS-universal.dmg) · [所有版本与校验值](https://github.com/LiuJH12138/NanoKVM-PixelWindow/releases)
+[下载通用安装包][dmg]，双击打开，将「NanoKVM 原生窗口」拖入「Applications（应用程序）」文件夹。
 
 此版本采用本地临时签名，尚未经过 Apple 公证。如果首次打开时 macOS 提示无法验证开发者，请确认下载来源并按[苹果的说明](https://support.apple.com/zh-cn/102445)操作。
 
@@ -64,3 +72,5 @@ open "$PWD/.build/NanoKVM 原生窗口.app"
 习惯用 Chrome 的用户也可以使用 Sipeed 提供的浏览器版。[官方本地部署教程](https://wiki.sipeed.com/hardware/zh/kvm/NanoKVM_USB/deployment.html)
 
 作者：[LiuJH12138](https://github.com/LiuJH12138)
+
+[dmg]: https://github.com/LiuJH12138/NanoKVM-PixelWindow/releases/download/v1.2.1/NanoKVM-PixelWindow-1.2.1-macOS-universal.dmg
