@@ -10,6 +10,12 @@
 
 主编辑区展示 [PyTorch Transformer 的自注意力实现](https://github.com/pytorch/pytorch/blob/6c3ba919b09a804c59ea37bcc826150c054840e0/torch/nn/modules/transformer.py#L960-L977)，旁边两个标签页分别打开了 [DeepSeek-V3](https://github.com/huggingface/transformers/blob/3d2d3b3f7bed13f858da128cd932a2f8d36e1490/src/transformers/models/deepseek_v3/modeling_deepseek_v3.py) 和 [Qwen3](https://github.com/huggingface/transformers/blob/3d2d3b3f7bed13f858da128cd932a2f8d36e1490/src/transformers/models/qwen3/modeling_qwen3.py) 的模型源码。
 
+## 在 Mac 显示器上移动和缩放窗口
+
+![同一台 Mac 显示器上的窗口操作渲染动图。按住 Option 把显示 Transformer 代码的被控端窗口从左下移到右上，拖动左下角等比放大，再双击边角恢复原生大小。](Assets/WindowGestures.webp)
+
+按住 **Option** 拖动画面，可以把被控端挪到 Finder 旁边。想看清小字时，拖动窗口边缘或角即可等比缩放。双击边缘或角，窗口就会回到原生像素大小。
+
 ## 为什么做这个窗口
 
 我用一台 Mac 和一块 **Sipeed NanoKVM-USB 标准版**操作 Windows 笔记本。Windows 输出 1080p，而 Mac 接的是 4K 显示器。把采集画面铺满屏幕时，文字也被放大了。我想在 Mac 桌面上留一块区域给 Windows，看清小字，旁边还能放自己的应用，于是做了这个 Swift 原生窗口。
