@@ -4,9 +4,9 @@
 
 **[下载 macOS 版（DMG）][dmg]** · [版本说明](https://github.com/LiuJH12138/NanoKVM-PixelWindow/releases/latest) · macOS 14+ · Intel 和 Apple 芯片
 
-![实机界面合成。左侧是 Mac 的 Finder，右侧是 NanoKVM 采集的 Windows 计算器，正在显示 1920 × 1080 的计算结果。](Assets/WindowPreview.png)
+![场景渲染：从 Mac 的 Finder 拖出「山间晨光.jpg」，移入显示山湖壁纸的 Windows 无边框窗口。](Assets/DesktopPreview.jpg)
 
-*从左侧 Finder 把文件拖入右侧采集窗口，应用会复制到选定的中转 U 盘。等到安全推出提示，再把 NanoKVM 拨到 T，即可在 Windows 读取。*
+*拖放演示（渲染图）。文件会复制到选定的中转 U 盘。看到安全推出提示后，把 NanoKVM 拨到 T，就能在 Windows 上打开文件。*
 
 ## 为什么做这个窗口
 
