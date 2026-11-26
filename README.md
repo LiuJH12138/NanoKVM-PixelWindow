@@ -4,15 +4,15 @@
 
 **[下载 macOS 版（DMG）][dmg]** · [版本说明](https://github.com/LiuJH12138/NanoKVM-PixelWindow/releases/latest) · macOS 14+ · Intel 和 Apple 芯片
 
-![左侧 Finder 中是 transformer.py；右侧 VS Code 工作台打开了 PyTorch 的 TransformerEncoderLayer，正在显示自注意力实现。](Assets/ModelSourcePreview.png)
+![左侧是 Mac 的 Finder，右侧是被控端的 VS Code 窗口，编辑器中可见 Transformer 的自注意力代码。](Assets/ModelSourcePreview.png)
 
-*将 `transformer.py` 从 Finder 拖入采集窗口，等 U 盘安全推出后拨到 T，再在 Windows 的 IDE 里打开文件。图中并排展示这两个时刻：左侧为 Finder 截图，右侧由独立运行的 VS Code 网页版渲染。*
+把源码从 Finder 拖入采集窗口。看到「U 盘已安全推出」后，将 NanoKVM 拨到 **T**，就能在 Windows 上打开文件。
 
 主编辑区展示 [PyTorch Transformer 的自注意力实现](https://github.com/pytorch/pytorch/blob/6c3ba919b09a804c59ea37bcc826150c054840e0/torch/nn/modules/transformer.py#L960-L977)，旁边两个标签页分别打开了 [DeepSeek-V3](https://github.com/huggingface/transformers/blob/3d2d3b3f7bed13f858da128cd932a2f8d36e1490/src/transformers/models/deepseek_v3/modeling_deepseek_v3.py) 和 [Qwen3](https://github.com/huggingface/transformers/blob/3d2d3b3f7bed13f858da128cd932a2f8d36e1490/src/transformers/models/qwen3/modeling_qwen3.py) 的模型源码。
 
 ## 在 Mac 显示器上移动和缩放窗口
 
-![同一台 Mac 显示器上的窗口操作渲染动图。按住 Option 把显示 Transformer 代码的被控端窗口从左下移到右上，拖动左下角等比放大，再双击边角恢复原生大小。](Assets/WindowGestures.webp)
+![Mac 桌面上的被控端窗口从左下移到右上，随后等比放大，最后恢复原生大小。](Assets/WindowGestures.webp)
 
 按住 **Option** 拖动画面，可以把被控端挪到 Finder 旁边。想看清小字时，拖动窗口边缘或角即可等比缩放。双击边缘或角，窗口就会回到原生像素大小。
 
