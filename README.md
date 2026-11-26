@@ -4,6 +4,12 @@
 
 窗口里只有被控电脑的画面。默认情况下，一个采集像素对应一个窗口缓冲区像素。在我的 4K 显示器使用 2× 显示缩放时，窗口占 **960 × 540 个 macOS 坐标点**，实际显示 **1920 × 1080 个像素**。也可以拖大窗口看细节，再双击边沿回到原始大小。
 
+## 下载安装
+
+在 macOS 14 或更新版本上，下载 DMG，双击打开，将「NanoKVM 原生窗口」拖入「Applications（应用程序）」文件夹。同一份安装包支持 Intel Mac 和 Apple 芯片 Mac。[下载 v1.1 通用安装包](https://github.com/LiuJH12138/NanoKVM-PixelWindow/releases/download/v1.1/NanoKVM-PixelWindow-1.1-macOS-universal.dmg) · [所有版本与校验值](https://github.com/LiuJH12138/NanoKVM-PixelWindow/releases)
+
+此版本采用本地临时签名，尚未经过 Apple 公证。如果首次打开时 macOS 提示无法验证开发者，请确认下载来源并按[苹果的说明](https://support.apple.com/zh-cn/102445)操作。
+
 ## 使用的硬件
 
 这是我为 Sipeed NanoKVM-USB 编写的第三方 macOS 客户端。NanoKVM-USB 硬件和官方软件由 Sipeed 提供。应用通过 AVFoundation 读取 USB 视频，通过 USB 串口把 Mac 的键鼠操作发送到被控电脑。[Sipeed 产品介绍](https://wiki.sipeed.com/hardware/zh/kvm/NanoKVM_USB/introduction.html) · [Sipeed 官方代码仓库](https://github.com/sipeed/NanoKVM-USB)
