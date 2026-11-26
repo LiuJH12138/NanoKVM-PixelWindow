@@ -1,20 +1,28 @@
 # <img src="Assets/AppIcon.png" width="52" height="52" align="middle" alt=""> NanoKVM PixelWindow
 
-用 **Sipeed NanoKVM-USB** 把 Windows 桌面放进 Mac 上的一扇无边框窗口。用 Mac 的键鼠直接操作，双击窗口边缘回到原生像素大小。
+坐在 Mac 前，用同一套键盘、鼠标和显示器操作旁边的 Windows 电脑。**Sipeed NanoKVM-USB** 采集被控机的 HDMI 画面，并通过 USB 把键鼠输入送回去。**PixelWindow** 在 Mac 本地运行，把这路画面放进一扇能移动、能缩放的无边框窗口。
 
 **[下载 macOS 版（DMG）][dmg]** · [版本说明](https://github.com/LiuJH12138/NanoKVM-PixelWindow/releases/latest) · macOS 14+ · Intel 和 Apple 芯片
-
-![左侧是 Mac 的 Finder，右侧是被控端的 VS Code 窗口，编辑器中可见 Transformer 的自注意力代码。](Assets/ModelSourcePreview.png)
-
-把源码从 Finder 拖入采集窗口。看到「U 盘已安全推出」后，将 NanoKVM 拨到 **T**，就能在 Windows 上打开文件。
-
-主编辑区展示 [PyTorch Transformer 的自注意力实现](https://github.com/pytorch/pytorch/blob/6c3ba919b09a804c59ea37bcc826150c054840e0/torch/nn/modules/transformer.py#L960-L977)，旁边两个标签页分别打开了 [DeepSeek-V3](https://github.com/huggingface/transformers/blob/3d2d3b3f7bed13f858da128cd932a2f8d36e1490/src/transformers/models/deepseek_v3/modeling_deepseek_v3.py) 和 [Qwen3](https://github.com/huggingface/transformers/blob/3d2d3b3f7bed13f858da128cd932a2f8d36e1490/src/transformers/models/qwen3/modeling_qwen3.py) 的模型源码。
 
 ## 在 Mac 显示器上移动和缩放窗口
 
 ![Mac 桌面上的被控端窗口从左下移到右上，随后等比放大，最后恢复原生大小。](Assets/WindowGestures.webp)
 
 按住 **Option** 拖动画面，可以把被控端挪到 Finder 旁边。想看清小字时，拖动窗口边缘或角即可等比缩放。双击边缘或角，窗口就会回到原生像素大小。
+
+## 本地控制与现场运维
+
+- **替代网络远控。** 两台电脑用线接好，只需在 Mac 安装应用。即使被控机没有联网，或防火墙限制了远程桌面连接，也可以在 Mac 上查看画面、操作键鼠。
+- **让数据留在本地。** 屏幕画面和键鼠输入沿 HDMI、USB 在设备之间传递，无需云端账号或中转服务器。传文件时由你选择中转 U 盘，无需为此开放网络共享端口。
+- **在现场排查故障。** 例如修改网络配置后远程桌面断开，只要机器仍有 HDMI 输出并能接收 USB 键鼠，就可以从 Mac 打开被控机的网络设置，检查 IP 地址或恢复配置。
+
+## 从 Mac 传文件到被控端
+
+![左侧是 Mac 的 Finder，右侧是被控端的 VS Code 窗口，编辑器中可见 Transformer 的自注意力代码。](Assets/ModelSourcePreview.png)
+
+把源码从 Finder 拖入采集窗口。看到「U 盘已安全推出」后，将 NanoKVM 拨到 **T**，就能在 Windows 上打开文件。
+
+主编辑区展示 [PyTorch Transformer 的自注意力实现](https://github.com/pytorch/pytorch/blob/6c3ba919b09a804c59ea37bcc826150c054840e0/torch/nn/modules/transformer.py#L960-L977)，旁边两个标签页分别打开了 [DeepSeek-V3](https://github.com/huggingface/transformers/blob/3d2d3b3f7bed13f858da128cd932a2f8d36e1490/src/transformers/models/deepseek_v3/modeling_deepseek_v3.py) 和 [Qwen3](https://github.com/huggingface/transformers/blob/3d2d3b3f7bed13f858da128cd932a2f8d36e1490/src/transformers/models/qwen3/modeling_qwen3.py) 的模型源码。
 
 ## 为什么做这个窗口
 
