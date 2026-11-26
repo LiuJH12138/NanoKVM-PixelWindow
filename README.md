@@ -4,11 +4,11 @@
 
 **[下载 macOS 版（DMG）][dmg]** · [版本说明](https://github.com/LiuJH12138/NanoKVM-PixelWindow/releases/latest) · macOS 14+ · Intel 和 Apple 芯片
 
-![源码传输场景渲染：从 Mac 的 Finder 拖出 transformer.py，右侧 Windows 编辑器分屏显示 Transformer、DeepSeek-V3 和 Qwen3 的 Python 源码。](Assets/ModelSourcePreview.png)
+![左侧 Finder 中是 transformer.py；右侧 VS Code 工作台打开了 PyTorch 的 TransformerEncoderLayer，正在显示自注意力实现。](Assets/ModelSourcePreview.png)
 
-*从 Finder 把 `transformer.py` 拖入采集窗口。应用将文件复制到中转 U 盘并安全推出后，把 NanoKVM 拨到 T，即可在 Windows 中打开源码。图中合并展示了拖放和打开后的两个时刻。*
+*将 `transformer.py` 从 Finder 拖入采集窗口，等 U 盘安全推出后拨到 T，再在 Windows 的 IDE 里打开文件。图中并排展示这两个时刻：左侧为 Finder 截图，右侧由独立运行的 VS Code 网页版渲染。*
 
-图中代码节选自 [PyTorch 的 Transformer 编码器调用](https://github.com/pytorch/pytorch/blob/6c3ba919b09a804c59ea37bcc826150c054840e0/torch/nn/modules/transformer.py#L283-L289)、[DeepSeek-V3 的混合专家层](https://github.com/huggingface/transformers/blob/3d2d3b3f7bed13f858da128cd932a2f8d36e1490/src/transformers/models/deepseek_v3/modeling_deepseek_v3.py#L207-L209) 和 [Qwen3 的门控前馈网络](https://github.com/huggingface/transformers/blob/3d2d3b3f7bed13f858da128cd932a2f8d36e1490/src/transformers/models/qwen3/modeling_qwen3.py#L81-L83)。
+主编辑区展示 [PyTorch Transformer 的自注意力实现](https://github.com/pytorch/pytorch/blob/6c3ba919b09a804c59ea37bcc826150c054840e0/torch/nn/modules/transformer.py#L960-L977)，旁边两个标签页分别打开了 [DeepSeek-V3](https://github.com/huggingface/transformers/blob/3d2d3b3f7bed13f858da128cd932a2f8d36e1490/src/transformers/models/deepseek_v3/modeling_deepseek_v3.py) 和 [Qwen3](https://github.com/huggingface/transformers/blob/3d2d3b3f7bed13f858da128cd932a2f8d36e1490/src/transformers/models/qwen3/modeling_qwen3.py) 的模型源码。
 
 ## 为什么做这个窗口
 
